@@ -24,11 +24,15 @@ def hello(request):
 def hello_python(request, a =''):
 	return HttpResponse("Hello python " + a)
 	
+def sum_two(request, a, b):
+	s = int(a) + int(b)
+	return HttpResponse("Sum = " + str(s))
 
 urlpatterns = [
     url(r'^$', hello),
 	url(r'^python/(?P<a>\w+)', hello_python),
 	url(r'^python/', hello_python),
+	url(r'^sum/(?P<a>\d+)/(?P<b>\d+)$', sum_two),
     url(r'^admin/', admin.site.urls),
 	
 ]
