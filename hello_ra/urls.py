@@ -21,12 +21,13 @@ from django.http import HttpResponse
 def hello(request):
 	return HttpResponse("Hello World")
 	
-def hello_python(request):
-	return HttpResponse("Hello python")
+def hello_python(request, a =''):
+	return HttpResponse("Hello python " + a)
 	
 
 urlpatterns = [
     url(r'^$', hello),
+	url(r'^python/(?P<a>\w+)', hello_python),
 	url(r'^python/', hello_python),
     url(r'^admin/', admin.site.urls),
 	
