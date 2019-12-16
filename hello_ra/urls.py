@@ -17,13 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def hello(request):
-	return HttpResponse("Hello World")
-	
+	return render(request, "index.html")
+
 def hello_python(request, a =''):
 	return HttpResponse("Hello python " + a)
-	
+
 def sum_two(request, a, b):
 	s = int(a) + int(b)
 	return HttpResponse("Sum = " + str(s))
@@ -34,5 +35,5 @@ urlpatterns = [
 	url(r'^python/', hello_python),
 	url(r'^sum/(?P<a>\d+)/(?P<b>\d+)$', sum_two),
     url(r'^admin/', admin.site.urls),
-	
+
 ]
